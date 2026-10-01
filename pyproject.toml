@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lpr"
+version = "0.1.0"
+description = "Realtime license plate recognition for the ISIN 499 capstone."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "ultralytics>=8.3",
+  "opencv-python>=4.8",
+  "numpy>=1.24",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+ocr = ["easyocr>=1.7"]
+api = ["fastapi>=0.110", "uvicorn>=0.27"]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

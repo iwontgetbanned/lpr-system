@@ -1,0 +1,7 @@
+device: 0
+imgsz: 640
+conf: 0.25
+iou: 0.7
+weights: models/plate_detector.pt
+database: logs/lpr.sqlite
+snapshot_dir: logs/snapshots

@@ -1,0 +1,5 @@
+cameras:
+  - name: file_demo
+    source: data/samples/IMG_1297.MOV
+  - name: webcam
+    source: 0

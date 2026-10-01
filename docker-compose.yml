@@ -1,0 +1,11 @@
+services:
+  lpr:
+    build: .
+    environment:
+      LPR_DEVICE: cpu
+      LPR_SOURCE: /footage/IMG_1297.MOV
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ../footage:/footage:ro
+    command: ["python", "scripts/run.py", "--no-display"]
