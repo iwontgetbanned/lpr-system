@@ -9,5 +9,5 @@ class PlateTracker:
     def __init__(self, detector: PlateDetector) -> None:
         self.detector = detector
 
-    def frames(self, source):
-        yield from self.detector.track(source)
+    def track_frame(self, frame):
+        return self.detector.track_frame(frame)

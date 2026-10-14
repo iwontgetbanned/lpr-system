@@ -6,5 +6,7 @@ tracker: bytetrack.yaml
 weights: models/plate_detector.pt
 ocr_every_n: 5
 min_votes: 3
+# Lane region as fractions of the frame: left, top, right, bottom.
+crop: [0.40, 0.50, 0.73, 0.70]
 database: logs/lpr.sqlite
 snapshot_dir: logs/snapshots

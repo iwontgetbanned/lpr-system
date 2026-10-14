@@ -1,5 +1,3 @@
 cameras:
-  - name: file_demo
-    source: data/samples/IMG_1381.MOV
-  - name: webcam
-    source: 0
+  - name: reolink
+    source: env:LPR_SOURCE

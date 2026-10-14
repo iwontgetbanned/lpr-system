@@ -25,10 +25,20 @@ class PlateVoter:
         self.min_votes = min_votes
         self.allowed = allowed
         self.history: dict[int, list[str]] = {}
+        self.locked: set[int] = set()
 
-    def add(self, track_id: int, text: str) -> None:
+    def add(self, track_id: int, text: str) -> PlateVote | None:
+        """Record one read. Return the plate once, when it first wins the vote."""
         cleaned = normalize_text(text, self.allowed)
-        self.history.setdefault(track_id, []).append(cleaned)
+        readings = self.history.setdefault(track_id, [])
+        readings.append(cleaned)
+        if track_id in self.locked:
+            return None
+        plate, count = Counter(readings).most_common(1)[0]
+        if count < self.min_votes or self.pattern.fullmatch(plate) is None:
+            return None
+        self.locked.add(track_id)
+        return PlateVote(track_id, plate, count, len(readings))
 
     def winners(self) -> list[PlateVote]:
         votes = []

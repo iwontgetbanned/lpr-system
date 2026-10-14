@@ -24,6 +24,15 @@ class PlateVoterTests(unittest.TestCase):
         self.assertEqual(winners[0].count, 3)
         self.assertEqual(winners[0].total, 4)
 
+    def test_add_returns_the_plate_once(self):
+        voter = PlateVoter(PATTERN, min_votes=3, allowed=ALLOWED)
+        self.assertIsNone(voter.add(9, "ESZ107"))
+        self.assertIsNone(voter.add(9, "ESZ107"))
+        locked = voter.add(9, "ESZ107")
+        self.assertIsNotNone(locked)
+        self.assertEqual(locked.plate, "ESZ107")
+        self.assertIsNone(voter.add(9, "ESZ107"))
+
     def test_blank_and_single_read_are_dropped(self):
         voter = PlateVoter(PATTERN, min_votes=3, allowed=ALLOWED)
         voter.add(46, "")

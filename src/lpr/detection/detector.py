@@ -40,16 +40,15 @@ class PlateDetector:
         self.settings = settings
         self.model = YOLO(str(settings.weights))
 
-    def track(self, source):
-        """Yield one result per frame, with ByteTrack ids when the detector sees a plate."""
+    def track_frame(self, frame):
+        """Track plates in one image. ``persist`` keeps ids across calls."""
         return self.model.track(
-            source,
+            frame,
             persist=True,
             tracker=self.settings.tracker,
             device=self.settings.device,
             imgsz=self.settings.imgsz,
             conf=self.settings.conf,
             iou=self.settings.iou,
-            stream=True,
             verbose=False,
-        )
+        )[0]
