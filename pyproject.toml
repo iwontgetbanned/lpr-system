@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-ocr = ["easyocr>=1.7"]
+ocr = ["fast-plate-ocr>=1.1"]
 api = ["fastapi>=0.110", "uvicorn>=0.27"]
 dev = ["pytest>=8.0"]
 

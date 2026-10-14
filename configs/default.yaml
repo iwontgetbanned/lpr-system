@@ -2,6 +2,9 @@ device: 0
 imgsz: 640
 conf: 0.25
 iou: 0.7
+tracker: bytetrack.yaml
 weights: models/plate_detector.pt
+ocr_every_n: 5
+min_votes: 3
 database: logs/lpr.sqlite
 snapshot_dir: logs/snapshots

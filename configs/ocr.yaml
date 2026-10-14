@@ -1,5 +1,4 @@
-engine: easyocr
-languages:
-  - en
+engine: fast-plate-ocr
+model: cct-s-v2-global-model
 allowed_chars: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 regex: "^[A-Z0-9]{4,8}$"
